@@ -1,11 +1,9 @@
-package br.com.infoway.modelo.usuarios;
+package br.com.infoway.modelo;
 
 import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-
-import br.com.infoway.modelo.Lanchonete;
 
 @Entity
 public class Gestor extends Pessoa implements Serializable{

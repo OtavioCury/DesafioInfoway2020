@@ -1,4 +1,4 @@
-package br.com.infoway.modelo.usuarios;
+package br.com.infoway.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
