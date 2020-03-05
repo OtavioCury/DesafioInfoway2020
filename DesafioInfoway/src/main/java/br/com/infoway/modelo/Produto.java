@@ -1,6 +1,7 @@
 package br.com.infoway.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -38,6 +40,12 @@ public class Produto implements Serializable{
 	@NotNull(message = "Preenchimento obrigatório!")
 	private Integer quantEstoque;
 	
+	@OneToMany(mappedBy = "produto")
+    private List<PedidoProduto> pedidosProdutos;
+	
+	public Produto() {
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -61,6 +69,18 @@ public class Produto implements Serializable{
 	}
 	public void setClasse(ClasseProduto classe) {
 		this.classe = classe;
+	}
+	public Integer getQuantEstoque() {
+		return quantEstoque;
+	}
+	public void setQuantEstoque(Integer quantEstoque) {
+		this.quantEstoque = quantEstoque;
+	}
+	public List<PedidoProduto> getPedidosProdutos() {
+		return pedidosProdutos;
+	}
+	public void setPedidosProdutos(List<PedidoProduto> pedidosProdutos) {
+		this.pedidosProdutos = pedidosProdutos;
 	}
 
 }

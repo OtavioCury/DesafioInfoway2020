@@ -40,6 +40,8 @@ public class Pessoa implements Serializable{
 	@Size(min = 3, max = 30, message = "A senha deve conter entre 6 e 30 caracteres!")
 	private String senha;
 	
+	public Pessoa() {
+	}
 	
 	public Long getId() {
 		return id;
