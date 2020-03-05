@@ -1,5 +1,8 @@
-package br.com.infoway.modelo;
+package br.com.infoway.modelo.usuarios;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +14,13 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Pessoa {
+public class Pessoa implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,9 +30,11 @@ public class Pessoa {
 	private String nome;
 	@NotEmpty(message = "Preenchimento obrigatório!")
 	@Size(min = 3, max = 30, message = "O email deve conter entre 3 e 50 caracteres!")
+	@Column(unique = true)
 	private String email;
 	@NotEmpty(message = "Preenchimento obrigatório!")
 	@Size(min = 3, max = 30, message = "O login deve conter entre 3 e 20 caracteres!")
+	@Column(unique = true)
 	private String login;
 	@NotEmpty(message = "Preenchimento obrigatório!")
 	@Size(min = 3, max = 30, message = "A senha deve conter entre 6 e 30 caracteres!")
