@@ -17,12 +17,10 @@ import br.com.infoway.config.JwtRequest;
 import br.com.infoway.config.JwtResponse;
 import br.com.infoway.config.JwtTokenUtil;
 import br.com.infoway.config.JwtUserDetailsService;
-import br.com.infoway.dto.PessoaDTO;
-import br.com.infoway.service.PessoaService;
 
 @RestController
 @CrossOrigin
-public class JwtAuthenticationController {
+public class LoginController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -32,10 +30,7 @@ public class JwtAuthenticationController {
 	@Autowired
 	private JwtUserDetailsService userDetailsService;
 
-	@Autowired
-	private PessoaService pessoaService;
-
-	@RequestMapping(value = "/autenticar", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
@@ -45,11 +40,6 @@ public class JwtAuthenticationController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
 		return ResponseEntity.ok(new JwtResponse(token));
-	}
-
-	@RequestMapping(value = "/cadastrar", method = RequestMethod.POST)
-	public ResponseEntity<?> saveUser(@RequestBody PessoaDTO pessoa) throws Exception {
-		return ResponseEntity.ok(pessoaService.inserir(pessoa));
 	}
 
 	private void authenticate(String username, String password) throws Exception {
