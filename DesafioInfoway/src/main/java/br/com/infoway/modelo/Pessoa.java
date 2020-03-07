@@ -33,16 +33,22 @@ public class Pessoa implements Serializable{
 	@Column(unique = true)
 	private String email;
 	@NotEmpty(message = "Preenchimento obrigatório!")
-	@Size(min = 3, max = 30, message = "O login deve conter entre 3 e 20 caracteres!")
-	@Column(unique = true)
-	private String login;
-	@NotEmpty(message = "Preenchimento obrigatório!")
-	@Size(min = 3, max = 30, message = "A senha deve conter entre 6 e 30 caracteres!")
+	@Size(min = 6, message = "A senha deve conter mais de 6 caracteres!")
 	private String senha;
 	
 	public Pessoa() {
 	}
 	
+	public Pessoa(
+			@NotEmpty(message = "Preenchimento obrigatório!") @Size(min = 3, max = 50, message = "O nome deve conter entre 3 e 50 caracteres!") String nome,
+			@NotEmpty(message = "Preenchimento obrigatório!") @Size(min = 3, max = 30, message = "O email deve conter entre 3 e 50 caracteres!") String email,
+			@NotEmpty(message = "Preenchimento obrigatório!") @Size(min = 3, max = 30, message = "A senha deve conter entre 6 e 30 caracteres!") String senha) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -60,12 +66,6 @@ public class Pessoa implements Serializable{
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
 	}
 	public String getSenha() {
 		return senha;
