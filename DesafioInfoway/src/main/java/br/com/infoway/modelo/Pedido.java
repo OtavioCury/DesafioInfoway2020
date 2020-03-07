@@ -32,7 +32,7 @@ public class Pedido implements Serializable{
 	@ManyToOne
 	private Cliente cliente;
 	@Temporal(TemporalType.DATE)
-	private Date dataNascimento;
+	private Date data;
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
 
@@ -58,12 +58,12 @@ public class Pedido implements Serializable{
 		this.cliente = cliente;
 	}
 
-	public Date getDataNascimento() {
-		return dataNascimento;
+	public Date getData() {
+		return data;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public StatusPedido getStatus() {
