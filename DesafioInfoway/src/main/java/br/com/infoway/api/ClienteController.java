@@ -12,6 +12,11 @@ import br.com.infoway.dto.ClienteDTO;
 import br.com.infoway.exception.MensagemException;
 import br.com.infoway.service.ClienteService;
 
+/**
+ * Controller de endpoints relacionados a entidade Cliente
+ * @author Otavio
+ *
+ */
 @RestController
 @RequestMapping(value="/cliente")
 public class ClienteController {

@@ -15,6 +15,11 @@ import br.com.infoway.modelo.Lanchonete;
 import br.com.infoway.service.GestorService;
 import br.com.infoway.service.LanchoneteService;
 
+/**
+ * Controller de endpoints relacionados a entidade Gestor
+ * @author Otavio
+ *
+ */
 @RestController
 @RequestMapping(value="/gestor")
 public class GestorController {

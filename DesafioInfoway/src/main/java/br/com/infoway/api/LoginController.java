@@ -18,6 +18,11 @@ import br.com.infoway.config.JwtResponse;
 import br.com.infoway.config.JwtTokenUtil;
 import br.com.infoway.config.JwtUserDetailsService;
 
+/**
+ * Controller reponsável por login e geração de tokens
+ * @author Otavio
+ *
+ */
 @RestController
 @CrossOrigin
 public class LoginController {
