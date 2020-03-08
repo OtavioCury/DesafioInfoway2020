@@ -17,6 +17,8 @@ import br.com.infoway.config.JwtRequest;
 import br.com.infoway.config.JwtResponse;
 import br.com.infoway.config.JwtTokenUtil;
 import br.com.infoway.config.JwtUserDetailsService;
+import br.com.infoway.modelo.RespostaLogin;
+import br.com.infoway.service.PessoaService;
 
 /**
  * Controller reponsável por login e geração de tokens
@@ -35,6 +37,16 @@ public class LoginController {
 	@Autowired
 	private JwtUserDetailsService userDetailsService;
 
+	@Autowired
+	private PessoaService pessoaService;
+	
+	/**
+	 * Endpoint responsável por verificar as credenciais de um usuário, 
+	 * gerar um token e enviá-lo junto com o objeto Pessoa
+	 * @param authenticationRequest
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
@@ -44,7 +56,10 @@ public class LoginController {
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
-		return ResponseEntity.ok(new JwtResponse(token));
+		RespostaLogin resposta = new RespostaLogin(new JwtResponse(token), 
+				pessoaService.login(userDetails.getUsername(), userDetails.getPassword()));
+
+		return ResponseEntity.ok(resposta);
 	}
 
 	private void authenticate(String username, String password) throws Exception {
