@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.infoway.modelo.enums.StatusPedido;
 
 @Entity
@@ -31,15 +33,25 @@ public class Pedido implements Serializable{
 
 	@ManyToOne
 	private Cliente cliente;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
-
+	private Double valor;
+	private String previsaoEntrega;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "pedido")
 	private List<PedidoProduto> pedidosProdutos;
 
 	public Pedido() {
+	}
+
+	public Pedido(Cliente cliente, Date data, StatusPedido status) {
+		super();
+		this.cliente = cliente;
+		this.data = data;
+		this.status = status;
 	}
 
 	public Long getId() {
@@ -80,6 +92,22 @@ public class Pedido implements Serializable{
 
 	public void setPedidosProdutos(List<PedidoProduto> pedidosProdutos) {
 		this.pedidosProdutos = pedidosProdutos;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	public String getPrevisaoEntrega() {
+		return previsaoEntrega;
+	}
+
+	public void setPrevisaoEntrega(String previsaoEntrega) {
+		this.previsaoEntrega = previsaoEntrega;
 	}
 
 }

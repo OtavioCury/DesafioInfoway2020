@@ -17,7 +17,7 @@ import br.com.infoway.config.JwtRequest;
 import br.com.infoway.config.JwtResponse;
 import br.com.infoway.config.JwtTokenUtil;
 import br.com.infoway.config.JwtUserDetailsService;
-import br.com.infoway.modelo.RespostaLogin;
+import br.com.infoway.modelo.respostas.RespostaLogin;
 import br.com.infoway.service.PessoaService;
 
 /**

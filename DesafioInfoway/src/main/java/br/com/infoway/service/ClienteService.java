@@ -33,4 +33,8 @@ public class ClienteService {
 		return clienteRepository.save(clienteEntity);
 	}
 	
+	public Cliente pesquisaPorEmail(String email) {
+		return clienteRepository.findByEmail(email);
+	}
+	
 }

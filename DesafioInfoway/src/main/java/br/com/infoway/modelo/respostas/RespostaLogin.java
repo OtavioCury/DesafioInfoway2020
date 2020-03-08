@@ -1,6 +1,7 @@
-package br.com.infoway.modelo;
+package br.com.infoway.modelo.respostas;
 
 import br.com.infoway.config.JwtResponse;
+import br.com.infoway.modelo.Pessoa;
 
 public class RespostaLogin {
 	

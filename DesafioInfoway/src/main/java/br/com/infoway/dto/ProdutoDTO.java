@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ProdutoDTO {
-	
+
 	private Long id;
 	private String nome;
 	private Double preco;
 	private String classe;
 	private Integer quantEstoque;
-	
+
 	@JsonCreator
 	public ProdutoDTO(@JsonProperty("nome") String nome, @JsonProperty("preco") Double preco, 
 			@JsonProperty("classe") String classe, @JsonProperty("quantEstoque")Integer quantEstoque) {
@@ -20,7 +20,7 @@ public class ProdutoDTO {
 		this.classe = classe;
 		this.quantEstoque = quantEstoque;
 	}
-	
+
 	@JsonCreator
 	public ProdutoDTO(@JsonProperty("id") Long id, @JsonProperty("nome") String nome, 
 			@JsonProperty("preco") Double preco, @JsonProperty("classe") String classe, 
@@ -63,5 +63,5 @@ public class ProdutoDTO {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 }

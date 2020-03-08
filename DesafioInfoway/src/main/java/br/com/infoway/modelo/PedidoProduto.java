@@ -33,10 +33,11 @@ public class PedidoProduto implements Serializable{
 	public PedidoProduto() {
 	}
 
-	public PedidoProduto(Pedido pedido, Produto produto) {
+	public PedidoProduto(Pedido pedido, Produto produto, int quantidade) {
 		super();
 		this.pedido = pedido;
 		this.produto = produto;
+		this.quantidade = quantidade;
 	}
 
 	public Pedido getPedido() {

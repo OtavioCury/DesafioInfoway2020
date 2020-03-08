@@ -15,6 +15,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.infoway.modelo.enums.ClasseProduto;
 
 @Entity
@@ -37,9 +39,11 @@ public class Produto implements Serializable{
 	private Double preco;
 	@Enumerated(EnumType.STRING)
 	private ClasseProduto classe;
+	@JsonIgnore
 	@NotNull(message = "Preenchimento obrigatório!")
 	private Integer quantEstoque;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "produto")
     private List<PedidoProduto> pedidosProdutos;
 	

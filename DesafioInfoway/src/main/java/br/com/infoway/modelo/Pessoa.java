@@ -36,9 +36,9 @@ public class Pessoa implements Serializable{
 	private String email;
 	@NotEmpty(message = "Preenchimento obrigatório!")
 	@Size(min = 6, message = "A senha deve conter mais de 6 caracteres!")
+	private String role;
 	@JsonIgnore
 	private String senha;
-	private String role;
 	
 	public Pessoa() {
 	}
