@@ -43,6 +43,17 @@ public class Produto implements Serializable{
 	@OneToMany(mappedBy = "produto")
     private List<PedidoProduto> pedidosProdutos;
 	
+	public Produto(
+			@NotEmpty(message = "Preenchimento obrigatório!") @Size(min = 3, max = 50, message = "O nome deve conter entre 3 e 50 caracteres!") String nome,
+			@NotNull(message = "Preenchimento obrigatório!") @DecimalMin(value = "0", message = "O preço deve ser maior que 0!") Double preco,
+			ClasseProduto classe, @NotNull(message = "Preenchimento obrigatório!") Integer quantEstoque) {
+		super();
+		this.nome = nome;
+		this.preco = preco;
+		this.classe = classe;
+		this.quantEstoque = quantEstoque;
+	}
+
 	public Produto() {
 	}
 	
