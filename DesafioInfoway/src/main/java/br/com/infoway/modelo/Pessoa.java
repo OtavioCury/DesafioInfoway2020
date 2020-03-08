@@ -12,6 +12,8 @@ import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa implements Serializable{
@@ -34,7 +36,9 @@ public class Pessoa implements Serializable{
 	private String email;
 	@NotEmpty(message = "Preenchimento obrigatório!")
 	@Size(min = 6, message = "A senha deve conter mais de 6 caracteres!")
+	@JsonIgnore
 	private String senha;
+	private String role;
 	
 	public Pessoa() {
 	}
@@ -72,6 +76,14 @@ public class Pessoa implements Serializable{
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }

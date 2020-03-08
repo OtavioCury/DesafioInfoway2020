@@ -35,6 +35,7 @@ public class Cliente extends Pessoa implements Serializable{
 		super(nome, email, senha);
 		this.dataNascimento = dataNascimento;
 		this.telefone = telefone;
+		setRole("CLIENTE");
 	}
 	
 	

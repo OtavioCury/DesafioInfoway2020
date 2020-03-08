@@ -30,6 +30,7 @@ public class Gestor extends Pessoa implements Serializable{
 			Lanchonete lanchonete) {
 		super(nome, email, senha);
 		this.lanchonete = lanchonete;
+		setRole("GESTOR");
 	}
 
 	public Lanchonete getLanchonete() {
