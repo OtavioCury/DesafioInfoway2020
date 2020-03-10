@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.infoway.dto.GestorDTO;
 import br.com.infoway.dto.LanchoneteDTO;
-import br.com.infoway.exception.MensagemException;
 import br.com.infoway.modelo.Lanchonete;
 import br.com.infoway.service.GestorService;
 import br.com.infoway.service.LanchoneteService;
@@ -35,11 +34,7 @@ public class GestorController {
 			LanchoneteDTO lanchoneteDTO = new LanchoneteDTO(gestor.getLanchonete());
 			Lanchonete lanchonete = lanchoneteService.inserir(lanchoneteDTO);
 			return ResponseEntity.ok(gestorService.inserir(gestor, lanchonete));
-		} catch (org.springframework.dao.DataIntegrityViolationException e) {
-			return ResponseEntity
-					.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body(MensagemException.emailExistente);
-		} catch(javax.validation.ConstraintViolationException e) {
+		} catch (Exception e) {
 			return ResponseEntity
 					.status(HttpStatus.INTERNAL_SERVER_ERROR)
 					.body(e.getMessage());

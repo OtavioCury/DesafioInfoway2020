@@ -1,6 +1,7 @@
 package br.com.infoway.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -39,7 +40,7 @@ public class LoginController {
 
 	@Autowired
 	private PessoaService pessoaService;
-	
+
 	/**
 	 * Endpoint responsável por verificar as credenciais de um usuário, 
 	 * gerar um token e enviá-lo junto com o objeto Pessoa
@@ -48,27 +49,33 @@ public class LoginController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest){
+		try {
+			authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
-		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+			final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+			final String token = jwtTokenUtil.generateToken(userDetails);
 
-		final String token = jwtTokenUtil.generateToken(userDetails);
+			RespostaLogin resposta = new RespostaLogin(new JwtResponse(token), 
+					pessoaService.login(userDetails.getUsername(), userDetails.getPassword()));
 
-		RespostaLogin resposta = new RespostaLogin(new JwtResponse(token), 
-				pessoaService.login(userDetails.getUsername(), userDetails.getPassword()));
+			return ResponseEntity.ok(resposta);
 
-		return ResponseEntity.ok(resposta);
+		} catch (Exception e) {
+			return ResponseEntity
+					.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(e.getMessage());
+		}
 	}
 
 	private void authenticate(String username, String password) throws Exception {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
-			throw new Exception("USER_DISABLED", e);
+			throw new Exception("Usuário desabilitado!", e);
 		} catch (BadCredentialsException e) {
-			throw new Exception("INVALID_CREDENTIALS", e);
+			throw new Exception("Credenciais inválidas!", e);
 		}
 	}
 }

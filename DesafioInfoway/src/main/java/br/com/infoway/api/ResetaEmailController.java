@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.infoway.config.JwtTokenUtil;
 import br.com.infoway.config.JwtUserDetailsService;
+import br.com.infoway.exception.MensagemException;
 import br.com.infoway.modelo.Pessoa;
 import br.com.infoway.service.PasswordResetTokenService;
 import br.com.infoway.service.PessoaService;
@@ -21,7 +22,7 @@ import br.com.infoway.service.PessoaService;
 @RestController
 @RequestMapping(value="/email")
 public class ResetaEmailController {
-	
+
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 	@Autowired
@@ -34,7 +35,7 @@ public class ResetaEmailController {
 	private JavaMailSender mailSender;
 	@Autowired
 	private Environment env;
-	
+
 	@PostMapping
 	public ResponseEntity<Object> resetaEmailPassword(@RequestParam("email") String email) {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(email);
@@ -46,21 +47,28 @@ public class ResetaEmailController {
 		}
 		Pessoa pessoa = pessoaService.pesquisarPorEmail(email);
 		passwordResetTokenService.criaToken(pessoa, token);
-		mailSender.send(constructResetTokenEmail(token, pessoa));
+		try {
+			mailSender.send(constructResetTokenEmail(token, pessoa));
+		} catch (Exception e) {
+			return ResponseEntity
+					.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(MensagemException.falhaEnvioEmail);
+		}
+
 		return ResponseEntity.ok("Email enviado para "+pessoa.getEmail());
 	}
-	
+
 	private SimpleMailMessage constructResetTokenEmail(String token, Pessoa pessoa) {
 		String url = "localhost:8080/alterarSenha?id=" + 
 				pessoa.getId() + "&token=" + token;
-		return constructEmail("Reset Password", url, pessoa);
+		return constructEmail("Recupera senha", url, pessoa);
 	}
 
 	private SimpleMailMessage constructEmail(String subject, String body, 
 			Pessoa pessoa) {
 		SimpleMailMessage email = new SimpleMailMessage();
 		email.setSubject(subject);
-		email.setText(body);
+		email.setText("Link para recuperação de email: "+body);
 		email.setTo(pessoa.getEmail());
 		email.setFrom(env.getProperty("spring.mail.username"));
 		return email;

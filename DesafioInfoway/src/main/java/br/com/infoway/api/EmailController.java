@@ -45,8 +45,14 @@ public class EmailController {
 
 	@PostMapping
 	public ResponseEntity<Object> alteraPassword(@RequestBody SenhaDTO senhaDto) {
-		pessoaService.atualizarSenha(senhaDto);
-		return ResponseEntity.ok("Senha alterado com sucesso!");
+		try {
+			pessoaService.atualizarSenha(senhaDto);
+			return ResponseEntity.ok("Senha alterado com sucesso!");
+		}catch(Exception e) {
+			return ResponseEntity
+					.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body(e.getMessage());
+		}
 
 	}
 
