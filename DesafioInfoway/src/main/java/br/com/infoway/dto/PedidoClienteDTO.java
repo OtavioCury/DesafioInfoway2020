@@ -5,12 +5,12 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class PedidoDTO {
+public class PedidoClienteDTO {
 	
 	private List<PedidoProdutoDTO> pedidosProdutos;
 
 	@JsonCreator
-	public PedidoDTO(@JsonProperty("id_cliente") long cliente, 
+	public PedidoClienteDTO(@JsonProperty("id_cliente") long cliente, 
 			@JsonProperty("produto_quantidade") List<PedidoProdutoDTO> pedidosProdutos) {
 		super();
 		this.pedidosProdutos = pedidosProdutos;
