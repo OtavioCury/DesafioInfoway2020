@@ -40,6 +40,8 @@ public class Pessoa implements Serializable{
 	@NotEmpty(message = "Preenchimento obrigatório!")
 	@JsonIgnore
 	private String senha;
+	@JsonIgnore
+	private boolean permitidoAlterarSenha;
 	
 	public Pessoa() {
 	}
@@ -52,6 +54,7 @@ public class Pessoa implements Serializable{
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
+		this.setPermitidoAlterarSenha(false);
 	}
 
 	public Long getId() {
@@ -85,6 +88,14 @@ public class Pessoa implements Serializable{
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public boolean isPermitidoAlterarSenha() {
+		return permitidoAlterarSenha;
+	}
+
+	public void setPermitidoAlterarSenha(boolean permitidoAlterarSenha) {
+		this.permitidoAlterarSenha = permitidoAlterarSenha;
 	}
 	
 }
