@@ -16,7 +16,8 @@ public class Cliente extends Pessoa implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	@NotEmpty(message = "Preenchimento obrigatório!")
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	@NotEmpty(message = "Preenchimento obrigatório!")

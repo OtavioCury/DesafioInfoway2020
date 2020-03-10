@@ -37,6 +37,7 @@ public class Produto implements Serializable{
 	@NotNull(message = "Preenchimento obrigatório!")
 	@DecimalMin(value = "0", message = "O preço deve ser maior que 0!")
 	private Double preco;
+	@NotNull(message = "Preenchimento obrigatório!")
 	@Enumerated(EnumType.STRING)
 	private ClasseProduto classe;
 	@JsonIgnore

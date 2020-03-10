@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -31,15 +32,19 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull(message = "Preenchimento obrigatório!")
 	@ManyToOne
 	private Cliente cliente;
+	@NotNull(message = "Preenchimento obrigatório!")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
+	@NotNull(message = "Preenchimento obrigatório!")
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
+	@NotNull(message = "Preenchimento obrigatório!")
 	private Double valor;
 	private String previsaoEntrega;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "pedido")
 	private List<PedidoProduto> pedidosProdutos;
