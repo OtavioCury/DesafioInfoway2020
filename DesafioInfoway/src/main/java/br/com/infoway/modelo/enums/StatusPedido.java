@@ -1,7 +1,7 @@
 package br.com.infoway.modelo.enums;
 
 public enum StatusPedido {
-	SOLICITADO("Solicitado"), SENDO_PREPARADO("Sendo preparado"), FINALIZADO("Finalizado"), CANCELADO("Cancelado");
+	SOLICITADO("Solicitado"), SENDO_PREPARADO("Sendo preparado"), FINALIZADO("Finalizado");
 
 	private String descricao;
 

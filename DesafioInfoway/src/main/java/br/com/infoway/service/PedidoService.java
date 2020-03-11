@@ -37,8 +37,8 @@ public class PedidoService {
 		double valorTotal = 0;
 		List<Produto> produtos = new ArrayList<Produto>();
 		Pedido pedido = pedidoRepository.save(new Pedido(cliente, new Date(), StatusPedido.SOLICITADO));
-		for (PedidoProdutoDTO pedidoProduto : pedidoDTO.getPedidosProdutos()) {
-			Produto produto = produtoRepository.findById(pedidoProduto.getProduto()).get();
+		for (PedidoProdutoDTO pedidoProduto : pedidoDTO.getProduto_quantidade()) {
+			Produto produto = produtoRepository.findById(pedidoProduto.getId_produto()).get();
 			if (pedidoProduto.getQuantidade() > produto.getQuantEstoque()) {
 				throw new Exception("Não temos "+pedidoProduto.getQuantidade()+" unidades do produto "+produto.getNome()+ " no estoque!");
 			}
@@ -50,12 +50,11 @@ public class PedidoService {
 			pedidoProdutoRepository.save(pedidoProdutoEntity);
 		}
 		pedido.setValor(valorTotal);
-		pedido.setData(new Date());
 		pedido = pedidoRepository.save(pedido);
 		RespostaPedido respostaPedido = new RespostaPedido(pedido, produtos);
 		return respostaPedido;
 	}
-	
+
 	public Pedido atualizarStatus(PedidoGestorDTO pedido) throws Exception {
 		if (pedido.getStatus().toUpperCase().equals("SOLICITADO") == true) {
 			throw new Exception(MensagemException.pedidoStatusGestor);
@@ -65,7 +64,7 @@ public class PedidoService {
 			return pedidoRepository.save(pedidoEntity);
 		}
 	}
-	
+
 	public String statusPedido(long id, Cliente cliente) throws Exception {
 		Pedido pedido = pedidoRepository.findById(id).get();
 		if(pedido.getCliente().getId() != cliente.getId()) {
@@ -73,7 +72,7 @@ public class PedidoService {
 		}
 		return pedido.getStatus().statusPedido();
 	}
-	
+
 	public String statusPedido(long id) throws Exception {
 		Pedido pedido = pedidoRepository.findById(id).get();
 		return pedido.getStatus().statusPedido();
