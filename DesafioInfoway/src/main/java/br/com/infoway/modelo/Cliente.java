@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -17,10 +18,10 @@ public class Cliente extends Pessoa implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@NotEmpty(message = "Preenchimento obrigatório!")
+	@NotNull(message = "Atributo dataNascimento: Preenchimento obrigatório!")
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
-	@NotEmpty(message = "Preenchimento obrigatório!")
+	@NotEmpty(message = "Atributo telefone: Preenchimento obrigatório!")
 	@Size(min = 3, max = 50, message = "O telefone deve conter entre 8 e 15 caracteres!")
 	private String telefone;
 	
