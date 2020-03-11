@@ -15,7 +15,7 @@
 <p align="justify">Essa aplicação utiliza o Gmail SMTP server para o envio de email na recuperação de senha. As configurações para o envio de email estão no arquivo <b>'resources/application.properties'</b> onde deve-se especificar o seu email e senha nos atributos <b>'spring.mail.username'</b> e <b>'spring.mail.passowrd'</b> respectivamente. O email utilizado deve permitir que aplicações o utilizem para o envio de emails.</p>
 
 <h2>EXECUTANDO</h2>
-<p align="justify">A aplicação pode ser executada utilizando IDEs adequadas ou pelo seguinte comando no prompt dentro da pasta principal da aplicação: <b>mvn spring-boot:run</b>. Após executar o comando acima a api estará disponível para ser utilizada.</p>
+<p align="justify">A aplicação pode ser executada utilizando IDEs adequadas, ou pelo seguinte comando no prompt dentro da pasta principal da aplicação: <b>mvn spring-boot:run</b>. Após executar o comando a api estará disponível para ser utilizada.</p>
 
 <h2>DOCUMENTAÇÃO API</h2>
 <p align="justify">A documentação de como utilizar os endpoints da API desenvolvida encontra-se disponível no seguinte <a href="https://www.getpostman.com/collections/710b78d91f20cdc3f25d">link</a>.</p>
