@@ -15,13 +15,13 @@ import br.com.infoway.repository.ClienteRepository;
  */
 @Service
 public class ClienteService {
-	
+
 	@Autowired 
 	private ClienteRepository clienteRepository;
-	
+
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
-	
+
 	/**
 	 * Método responsável por inserir um cliente no banco de dados
 	 * @param cliente
@@ -32,9 +32,14 @@ public class ClienteService {
 				cliente.getDataNascimento(), cliente.getTelefone());
 		return clienteRepository.save(clienteEntity);
 	}
-	
+
+	/**
+	 * Método responsável por pesquisar um Cliente por email
+	 * @param email
+	 * @return
+	 */
 	public Cliente pesquisaPorEmail(String email) {
 		return clienteRepository.findByEmail(email);
 	}
-	
+
 }
