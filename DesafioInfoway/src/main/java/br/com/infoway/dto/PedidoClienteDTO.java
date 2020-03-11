@@ -3,24 +3,23 @@ package br.com.infoway.dto;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PedidoClienteDTO {
-	
-	private List<PedidoProdutoDTO> pedidosProdutos;
+
+	private List<PedidoProdutoDTO> produto_quantidade;
 
 	@JsonCreator
-	public PedidoClienteDTO(@JsonProperty("id_cliente") long cliente, 
-			@JsonProperty("produto_quantidade") List<PedidoProdutoDTO> pedidosProdutos) {
+	public PedidoClienteDTO(List<PedidoProdutoDTO> produto_quantidade) {
 		super();
-		this.pedidosProdutos = pedidosProdutos;
+		this.produto_quantidade = produto_quantidade;
 	}
 
-	public List<PedidoProdutoDTO> getPedidosProdutos() {
-		return pedidosProdutos;
+	public List<PedidoProdutoDTO> getProduto_quantidade() {
+		return produto_quantidade;
 	}
-	public void setPedidosProdutos(List<PedidoProdutoDTO> pedidosProdutos) {
-		this.pedidosProdutos = pedidosProdutos;
+
+	public void setProduto_quantidade(List<PedidoProdutoDTO> produto_quantidade) {
+		this.produto_quantidade = produto_quantidade;
 	}
 
 }
