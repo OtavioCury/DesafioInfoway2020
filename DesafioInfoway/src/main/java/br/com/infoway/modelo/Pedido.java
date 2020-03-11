@@ -32,16 +32,15 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "Preenchimento obrigatório!")
+	@NotNull(message = "Atributo cliente: Preenchimento obrigatório!")
 	@ManyToOne
 	private Cliente cliente;
-	@NotNull(message = "Preenchimento obrigatório!")
+	@NotNull(message = "Atributo data: Preenchimento obrigatório!")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
-	@NotNull(message = "Preenchimento obrigatório!")
+	@NotNull(message = "Atributo status: Preenchimento obrigatório!")
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
-	@NotNull(message = "Preenchimento obrigatório!")
 	private Double valor;
 	private String previsaoEntrega;
 

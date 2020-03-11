@@ -16,7 +16,7 @@ public class Gestor extends Pessoa implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@NotNull(message = "Preenchimento obrigatório!")
+	@NotNull(message = "Atributo lanchonete: Preenchimento obrigatório!")
 	@OneToOne
 	private Lanchonete lanchonete;
 

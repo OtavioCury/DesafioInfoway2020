@@ -21,7 +21,7 @@ public class Lanchonete implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotEmpty(message = "Preenchimento obrigatório!")
+	@NotEmpty(message = "Atributo nome: Preenchimento obrigatório!")
 	@Size(min = 3, max = 50, message = "O nome deve conter entre 3 e 50 caracteres!")
 	private String nome;
 

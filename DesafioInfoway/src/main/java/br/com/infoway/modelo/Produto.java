@@ -31,16 +31,16 @@ public class Produto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotEmpty(message = "Preenchimento obrigatório!")
+	@NotEmpty(message = "Atributo nome: Preenchimento obrigatório!")
 	@Size(min = 3, max = 50, message = "O nome deve conter entre 3 e 50 caracteres!")
 	private String nome;
-	@NotNull(message = "Preenchimento obrigatório!")
+	@NotNull(message = "Atributo preco: Preenchimento obrigatório!")
 	@DecimalMin(value = "0", message = "O preço deve ser maior que 0!")
 	private Double preco;
-	@NotNull(message = "Preenchimento obrigatório!")
+	@NotNull(message = "Atributo classe: Preenchimento obrigatório!")
 	@Enumerated(EnumType.STRING)
 	private ClasseProduto classe;
-	@NotNull(message = "Preenchimento obrigatório!")
+	@NotNull(message = "Atributo quantEstoque: Preenchimento obrigatório!")
 	private Integer quantEstoque;
 	
 	@JsonIgnore

@@ -27,17 +27,17 @@ public class Pessoa implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty(message = "Preenchimento obrigatório!")
+	@NotEmpty(message = "Atributo nome: Preenchimento obrigatório!")
 	@Size(min = 3, max = 50, message = "O nome deve conter entre 3 e 50 caracteres!")
 	private String nome;
-	@NotEmpty(message = "Preenchimento obrigatório!")
+	@NotEmpty(message = "Atributo email: Preenchimento obrigatório!")
 	@Size(min = 3, max = 30, message = "O email deve conter entre 3 e 50 caracteres!")
 	@Column(unique = true)
 	private String email;
-	@NotEmpty(message = "Preenchimento obrigatório!")
+	@NotEmpty(message = "Atributo role: Preenchimento obrigatório!")
 	@Size(min = 6, message = "A senha deve conter mais de 6 caracteres!")
 	private String role;
-	@NotEmpty(message = "Preenchimento obrigatório!")
+	@NotEmpty(message = "Atributo senha: Preenchimento obrigatório!")
 	@JsonIgnore
 	private String senha;
 	@JsonIgnore
