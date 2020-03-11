@@ -40,7 +40,6 @@ public class Produto implements Serializable{
 	@NotNull(message = "Preenchimento obrigatório!")
 	@Enumerated(EnumType.STRING)
 	private ClasseProduto classe;
-	@JsonIgnore
 	@NotNull(message = "Preenchimento obrigatório!")
 	private Integer quantEstoque;
 	
