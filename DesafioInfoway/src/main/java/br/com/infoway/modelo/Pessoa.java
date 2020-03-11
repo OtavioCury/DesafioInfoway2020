@@ -14,6 +14,11 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Entidade genérica que representa uma pessoa
+ * @author Otavio
+ *
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa implements Serializable{

@@ -8,6 +8,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Entidade que representa um Gestor da lanchonete
+ * @author Otavio
+ *
+ */
 @Entity
 public class Gestor extends Pessoa implements Serializable{
 

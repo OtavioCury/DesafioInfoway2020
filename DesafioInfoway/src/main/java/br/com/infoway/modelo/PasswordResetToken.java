@@ -12,6 +12,11 @@ import javax.persistence.OneToOne;
 
 import org.apache.commons.lang.time.DateUtils;
 
+/**
+ * Entidade utilizada na recuperação de senha de um usuário
+ * @author Otavio
+ *
+ */
 @Entity
 public class PasswordResetToken {
 	private static final int EXPIRATION = 60 * 24;

@@ -19,6 +19,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.infoway.modelo.enums.ClasseProduto;
 
+/**
+ * Entidade que representa um Produto
+ * @author Otavio
+ *
+ */
 @Entity
 public class Produto implements Serializable{
 

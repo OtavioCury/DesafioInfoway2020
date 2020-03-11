@@ -1,5 +1,10 @@
 package br.com.infoway.exception;
 
+/**
+ * Classe que guarda as mensagens de erros utilizadas nos endpoints
+ * @author Otavio
+ *
+ */
 public class MensagemException{
 
 	static public String emailExistente = "Email indisponível! Tente outro";

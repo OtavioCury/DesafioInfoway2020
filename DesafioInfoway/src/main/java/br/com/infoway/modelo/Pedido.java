@@ -20,6 +20,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.infoway.modelo.enums.StatusPedido;
 
+/**
+ * Entidade que representa um Pedido de um Cliente
+ * @author Otavio
+ *
+ */
 @Entity
 public class Pedido implements Serializable{
 

@@ -10,6 +10,11 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * Entidade que representa um Cliente da lanchonete
+ * @author Otavio
+ *
+ */
 @Entity
 public class Cliente extends Pessoa implements Serializable{
 

@@ -9,6 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/**
+ * Entidade que representa um relacionamento de Pedidos que Produtos
+ * @author Otavio
+ *
+ */
 @Entity
 public class PedidoProduto implements Serializable{
 	/**

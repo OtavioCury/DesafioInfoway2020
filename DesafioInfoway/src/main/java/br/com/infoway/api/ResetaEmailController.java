@@ -19,6 +19,11 @@ import br.com.infoway.modelo.Pessoa;
 import br.com.infoway.service.PasswordResetTokenService;
 import br.com.infoway.service.PessoaService;
 
+/**
+ * Controller de endpoints relacionados à funcionalidade de recuperação de senha
+ * @author Otavio
+ *
+ */
 @RestController
 @RequestMapping(value="/email")
 public class ResetaEmailController {

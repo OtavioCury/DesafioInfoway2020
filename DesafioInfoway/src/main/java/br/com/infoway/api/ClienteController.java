@@ -22,7 +22,12 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
-
+	
+	/**
+	 * Endpoint responsável pelo cadastro de um Cliente.
+	 * @param cliente
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Object> salvarCliente(@RequestBody ClienteDTO cliente){
 		try {

@@ -9,6 +9,11 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+/**
+ * Entidade que representa uma lanchonete
+ * @author Otavio
+ *
+ */
 @Entity
 public class Lanchonete implements Serializable{
 

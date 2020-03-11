@@ -27,7 +27,13 @@ public class GestorController {
 	private GestorService gestorService;
 	@Autowired
 	private LanchoneteService lanchoneteService;
-
+	
+	/**
+	 * Endpoint responsável pelo cadastro de um gestor.
+	 * @param gestor
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Object> salvarGestor(@RequestBody GestorDTO gestor) throws Exception {
 		try {
